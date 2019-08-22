@@ -13,7 +13,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "NODE_ENV=test; node src/model/database/db_build.js; react-scripts test",
+    "db_build": "NODE_ENV=test node src/model/database/db_build.js",
+    "test": "npm run db_build && react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
