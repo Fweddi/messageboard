@@ -17,7 +17,7 @@ CREATE TABLE post (
     post_id INT PRIMARY KEY AUTO_INCREMENT, 
     post_title VARCHAR(100) NOT NULL, 
     post_content TEXT NOT NULL, 
-    user_id INT, 
+    user_id INT NOT NULL, 
     CONSTRAINT post_author FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE, 
     post_date VARCHAR(20) NOT NULL
     );
@@ -27,8 +27,10 @@ VALUES ('Breaking News', 'MySQL sucks', (SELECT user_id FROM user WHERE user_nam
 CREATE TABLE comment (
     comment_id INT PRIMARY KEY AUTO_INCREMENT, 
     comment_content TEXT NOT NULL,
-    user_id INT, CONSTRAINT comment_author FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE, 
-    post_id INT, CONSTRAINT comment_parent FOREIGN KEY (post_id) REFERENCES post(post_id) ON DELETE CASCADE, 
+    user_id INT NOT NULL, 
+    CONSTRAINT comment_author FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE, 
+    post_id INT NOT NULL, 
+    CONSTRAINT comment_parent FOREIGN KEY (post_id) REFERENCES post(post_id) ON DELETE CASCADE, 
     comment_date VARCHAR(20) NOT NULL
 );
 INSERT INTO comment (comment_content, user_id, post_id, comment_date) 
