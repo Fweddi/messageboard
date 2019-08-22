@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const config = require('../../../config');
+const config = require('../../../../config');
 
 let { DB_URL, TEST_DB_URL } = config;
 
@@ -9,9 +9,9 @@ if (process.env.NODE_ENV === 'test') {
 
 let connection = mysql.createConnection(DB_URL);
 
-const postUser = (user_name, user_pass, user_date) => {
+const postPost = (post_title, post_content, post_date) => {
     return new Promise((resolve, reject) => {
-        connection.query(`INSERT INTO user (user_name, user_pass, user_date) VALUES ('${user_name}', '${user_pass}', '${user_date}')`, (err, res, fields) => {
+        connection.query(`INSERT INTO post (post_title, post_content, post_date) VALUES ('${post_title}', '${post_content}', '${post_date}')`, (err, res, fields) => {
             if (err) reject(err);
             else resolve(res.affectedRows);
         });
@@ -20,4 +20,4 @@ const postUser = (user_name, user_pass, user_date) => {
     })
 }
 
-module.exports = postUser;
+module.exports = postPost;

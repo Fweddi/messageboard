@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const config = require('../../../config');
+const config = require('../../../../config');
 
 let { DB_URL, TEST_DB_URL } = config;
 
@@ -9,9 +9,9 @@ if (process.env.NODE_ENV === 'test') {
 
 let connection = mysql.createConnection(DB_URL);
 
-const getPostAuthor = (user_id) => {
+const getComments = (post_id) => {
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT user_name FROM user WHERE user_id LIKE '${user_id}'`, (err, res, fields) => {
+        connection.query(`SELECT * FROM comment WHERE post_id LIKE '${post_id}' ORDER BY comment_date`, (err, res, fields) => {
             if (err) reject(err);
             else resolve(res[0]);
         });
@@ -20,4 +20,4 @@ const getPostAuthor = (user_id) => {
     })
 }
 
-module.exports = getPostAuthor;
+module.exports = getComments;
