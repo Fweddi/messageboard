@@ -1,13 +1,4 @@
-const mysql = require('mysql');
-const config = require('../../../../config');
-
-let { DB_URL, TEST_DB_URL } = config;
-
-if (process.env.NODE_ENV === 'test') {
-    DB_URL = TEST_DB_URL;
-}
-
-let connection = mysql.createConnection(DB_URL);
+const connection = require('../../database/db_connect');
 
 const insertUser = (user_name, user_pass, user_date) => {
     return new Promise((resolve, reject) => {
