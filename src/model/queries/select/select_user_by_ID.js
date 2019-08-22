@@ -9,9 +9,9 @@ if (process.env.NODE_ENV === 'test') {
 
 let connection = mysql.createConnection(DB_URL);
 
-const selectUser = (user_name) => {
+const selectUserByID = (user_id) => {
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT * FROM user WHERE user_name LIKE '${user_name}'`, (err, res, fields) => {
+        connection.query(`SELECT * FROM user WHERE user_id LIKE '${user_id}'`, (err, res, fields) => {
             if (err) reject(err);
             else resolve(res[0]);
         });
@@ -20,5 +20,4 @@ const selectUser = (user_name) => {
     })
 }
 
-module.exports = selectUser;
-
+module.exports = selectUserByID;

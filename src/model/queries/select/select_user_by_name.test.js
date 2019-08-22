@@ -1,7 +1,7 @@
-const selectUser = require('./select_User');
+const selectUserByName = require('./select_user_by_name');
 
 test('selects user from the database', () => {
-    selectUser('foo')
+    selectUserByName('foo')
         .then(res => expect(res).toHaveProperty('user_name'))
         .catch(err => console.error(err));
 });
