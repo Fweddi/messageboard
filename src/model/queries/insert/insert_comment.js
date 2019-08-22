@@ -9,9 +9,9 @@ if (process.env.NODE_ENV === 'test') {
 
 let connection = mysql.createConnection(DB_URL);
 
-const insertComment = (comment_content, comment_date) => {
+const insertComment = (comment_content, user_id, post_id, comment_date) => {
     return new Promise((resolve, reject) => {
-        connection.query(`INSERT INTO comment (comment_content, comment_date) VALUES ('${comment_content}', '${comment_date}')`, (err, res, fields) => {
+        connection.query(`INSERT INTO comment (comment_content, user_id, post_id, comment_date) VALUES ('${comment_content}', '${user_id}', '${post_id}', '${comment_date}')`, (err, res, fields) => {
             if (err) reject(err);
             else resolve(res.affectedRows);
         });

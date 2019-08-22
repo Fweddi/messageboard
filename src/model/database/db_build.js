@@ -13,6 +13,8 @@ if (process.env.NODE_ENV === 'test') {
     DB_URL = TEST_DB_URL;
 }
 
+DB_URL = TEST_DB_URL;
+
 let connection = mysql.createConnection(DB_URL);
 
 connection.connect();
