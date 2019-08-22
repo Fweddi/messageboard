@@ -1,17 +1,13 @@
 let mysql = require('mysql');
+let config = require('../../../config');
 
-let DATABASE_URL = config.DATABASE_URL;
+let { DB_URL, TEST_DB_URL } = config;
 
 if (process.env.NODE_ENV === 'test') {
-    DATABASE_URL = config.TEST_DATABASE_URL;
+    DB_URL = TEST_DB_URL;
 }
 
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'me',
-    password: 'secret',
-    database: 'my_db'
-});
+let connection = mysql.createConnection(DB_URL);
 
 connection.connect();
 
