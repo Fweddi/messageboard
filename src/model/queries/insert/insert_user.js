@@ -9,15 +9,15 @@ if (process.env.NODE_ENV === 'test') {
 
 let connection = mysql.createConnection(DB_URL);
 
-const getPostAuthor = (user_id) => {
+const insertUser = (user_name, user_pass, user_date) => {
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT user_name FROM user WHERE user_id LIKE '${user_id}'`, (err, res, fields) => {
+        connection.query(`INSERT INTO user (user_name, user_pass, user_date) VALUES ('${user_name}', '${user_pass}', '${user_date}')`, (err, res, fields) => {
             if (err) reject(err);
-            else resolve(res[0]['user_name']);
+            else resolve(res.affectedRows);
         });
 
         connection.end();
     })
 }
 
-module.exports = getPostAuthor;
+module.exports = insertUser;

@@ -9,16 +9,15 @@ if (process.env.NODE_ENV === 'test') {
 
 let connection = mysql.createConnection(DB_URL);
 
-const getPassword = (user_name) => {
+const selectComments = (post_id) => {
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT user_pass FROM user WHERE user_name LIKE '${user_name}'`, (err, res, fields) => {
+        connection.query(`SELECT * FROM comment WHERE post_id LIKE '${post_id}' ORDER BY comment_date`, (err, res, fields) => {
             if (err) reject(err);
-            else resolve(res[0]['user_pass']);
+            else resolve(res[0]);
         });
 
         connection.end();
     })
 }
 
-module.exports = getPassword;
-
+module.exports = selectComments;

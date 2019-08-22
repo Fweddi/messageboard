@@ -9,15 +9,15 @@ if (process.env.NODE_ENV === 'test') {
 
 let connection = mysql.createConnection(DB_URL);
 
-const getComments = (post_id) => {
+const insertPost = (post_title, post_content, post_date) => {
     return new Promise((resolve, reject) => {
-        connection.query(`SELECT * FROM comment WHERE post_id LIKE '${post_id}' ORDER BY comment_date`, (err, res, fields) => {
+        connection.query(`INSERT INTO post (post_title, post_content, post_date) VALUES ('${post_title}', '${post_content}', '${post_date}')`, (err, res, fields) => {
             if (err) reject(err);
-            else resolve(res[0]);
+            else resolve(res.affectedRows);
         });
 
         connection.end();
     })
 }
 
-module.exports = getComments;
+module.exports = insertPost;
