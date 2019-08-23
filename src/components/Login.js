@@ -1,13 +1,6 @@
 import React from 'react';
-import "./Register.css"
-
-const stringifyFormData = (fd) => {
-    const data = {};
-    for (let key of fd.keys()) {
-        data[key] = fd.get(key);
-    }
-    return JSON.stringify(data, null, 2);
-}
+import "./Register.css";
+const stringifyFormData = require('../utils/stringify_form_data');
 
 class Register extends React.Component {
     constructor() {
@@ -29,7 +22,7 @@ class Register extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <form onSubmit={this.handleSubmit} class="login__form">
+                <form onSubmit={this.handleSubmit} className="login__form">
                     <h2>LOGIN</h2>
                     <label htmlFor="username">Username</label>
                     <input id="username" name="username" type="text" required />

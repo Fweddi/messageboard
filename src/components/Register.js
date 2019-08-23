@@ -1,13 +1,6 @@
 import React from 'react';
-import "./Register.css"
-
-const stringifyFormData = (fd) => {
-    const data = {};
-    for (let key of fd.keys()) {
-        data[key] = fd.get(key);
-    }
-    return JSON.stringify(data, null, 2);
-}
+import "./Register.css";
+const stringifyFormData = require('../utils/stringify_form_data');
 
 class Register extends React.Component {
     constructor() {
@@ -35,6 +28,7 @@ class Register extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        console.log(event.target);
         const data = new FormData(event.target);
         const JSONdata = stringifyFormData(data);
 
@@ -47,7 +41,7 @@ class Register extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <form onSubmit={this.handleSubmit} class="register__form">
+                <form onSubmit={this.handleSubmit} className="register__form">
                     <h2>REGISTER</h2>
                     <label htmlFor="username">Username</label>
                     <input id="username" name="username" type="text" required />
@@ -57,7 +51,7 @@ class Register extends React.Component {
 
                     <label htmlFor="password">Confirm Password</label>
                     <input id="password__confirm" name="password__confirm" type="password" pattern='^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$' value={this.state.value} onChange={this.handleChange} onBlur={this.handleBlur} required />
-                    {!this.state.match ? <div class="match"> Passwords must match! </div> : <button>Submit</button>}
+                    {!this.state.match ? <div className="match"> Passwords must match! </div> : <button>Submit</button>}
 
                     <p>Your password must be at least eight characters long.</p>
                     <p>It must also contain at least one uppercase letter, one lowercase letter, one number and one special character.</p>

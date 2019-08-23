@@ -3,7 +3,7 @@ import './Or.css';
 
 const Or = () => {
     return (
-        <p class='or'>OR</p>
+        <p className='or'>OR</p>
     )
 }
 
