@@ -6,8 +6,6 @@ const insertComment = (comment_content, user_id, post_id, comment_date) => {
             if (err) reject(err);
             else resolve(res.affectedRows);
         });
-
-        connection.end();
     })
 }
 

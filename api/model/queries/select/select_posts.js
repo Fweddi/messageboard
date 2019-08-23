@@ -6,8 +6,6 @@ const selectPosts = () => {
             if (err) reject(err);
             else resolve(res[0]);
         });
-
-        connection.end();
     })
 }
 

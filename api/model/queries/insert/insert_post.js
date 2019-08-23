@@ -6,8 +6,6 @@ const insertPost = (post_title, post_content, user_id, post_date) => {
             if (err) reject(err);
             else resolve(res.affectedRows);
         });
-
-        connection.end();
     })
 }
 
