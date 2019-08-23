@@ -20,7 +20,7 @@ class Register extends React.Component {
         const data = new FormData(event.target);
         console.log(stringifyFormData(data));
 
-        fetch('/api/form-submit-url', {
+        fetch('/api/form-submit', {
             method: 'POST',
             body: data,
         });
