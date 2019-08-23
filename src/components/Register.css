@@ -18,13 +18,12 @@ form {
 }
 
 .register__form {
-    height: 36em;
+    height: auto;
 }
 
 .login__form {
-    height: 18em;
+    height: auto;
 }
-
 
 label {
     margin: 1em 0;
@@ -81,4 +80,8 @@ p {
     font-size: 1em;
     align-self: center;
     letter-spacing: normal;
+}
+
+.error {
+    color: red;
 }
