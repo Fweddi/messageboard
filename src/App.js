@@ -3,12 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 
 import Register from './components/Register';
+import Login from './components/Login';
+import Or from './components/Or';
 
 function App() {
   return (
-    <React.Fragment>
-      <Register></Register>
-    </React.Fragment>
+    <main>
+      <Register />
+      <Or />
+      <Login />
+    </main>
   );
 }
 

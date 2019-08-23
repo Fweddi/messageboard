@@ -31,7 +31,7 @@ app.get('/express', (req, res) => {
 //     res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 // });
 
-app.post('/api/form-submit', (req, res) => {
+app.post('/api/register-submit', (req, res) => {
     let content = '';
     req.on('data', (data) => {
         content += data;
@@ -47,6 +47,22 @@ app.post('/api/form-submit', (req, res) => {
         };
     });
 });
+
+app.post('/api/login-submit', (req, res) => {
+    let content = '';
+    req.on('data', (data) => {
+        content += data;
+    });
+    req.on('end', () => {
+        let data = JSON.parse(content);
+        let { username, password } = data;
+
+        if ((checkUsername(username) && checkPassword(password))) {
+            console.log(username, password);
+        };
+    });
+});
+
 
 app.set('PORT', process.env.PORT || 9000);
 

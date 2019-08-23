@@ -38,7 +38,7 @@ class Register extends React.Component {
         const data = new FormData(event.target);
         const JSONdata = stringifyFormData(data);
 
-        fetch('/api/form-submit', {
+        fetch('/api/register-submit', {
             method: 'POST',
             body: JSONdata,
         }).catch(error => console.error(error));
@@ -47,7 +47,7 @@ class Register extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} class="register__form">
                     <h2>REGISTER</h2>
                     <label htmlFor="username">Username</label>
                     <input id="username" name="username" type="text" required />
