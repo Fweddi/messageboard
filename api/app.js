@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-const { check, validationResult } = require('express-validator');
+const validator = require('validator');
 const escapeHtml = require('escape-html');
 
 require('dotenv').config();
@@ -32,7 +32,6 @@ app.get('/express', (req, res) => {
 // });
 
 app.post('/api/form-submit', (req, res, next) => {
-    console.log(req.url);
     let content = '';
     req.on('data', (data) => {
         // Append data.
@@ -40,22 +39,34 @@ app.post('/api/form-submit', (req, res, next) => {
     });
     req.on('end', () => {
         // Assuming, we're receiving JSON, parse the string into a JSON object to return.
-        var data = JSON.parse(content);
-        console.log(data);
+        let data = JSON.parse(content);
+        let { username, password } = data;
 
-        // check('name')
-        //     .not()
-        //     .isEmpty()
-        //     .trim()
-        //     .escape()
-        //     .withMessage('You should input your name'),
-        //     check('email')
-        //         .exists()
-        //         .isEmail()
-        //         .escape()
-        //         .withMessage('You should input a email');
+        const checkUsername = (username) => {
+            if (!validator.isLength(username, 1, 15)) {
+                console.log('Username must be between 1 and 15 characters long');
+                return false;
+            }
+            username = validator.trim(username);
+            username = validator.escape(username);
+            return username;
+        }
+
+        const checkPassword = (password) => {
+            if (!validator.matches(password, /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$/)) {
+                console.error('Password must contain at least one uppercase letter, one lowercase letter, one number and one special character, and be at least eight characters long');
+                return false;
+            }
+            else return password;
+        }
+
+        if ((checkUsername(username) && checkPassword(password))) {
+
+        };
 
         // const errors = validationResult(data);
+
+        // console.log(errors.array());
 
         // const escapedAnswer = {
         //     q1: escapeHtml(data.answers.q1)
