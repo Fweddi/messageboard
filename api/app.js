@@ -32,7 +32,8 @@ app.get('/express', (req, res) => {
 // });
 
 app.post('/api/form-submit', (req, res, next) => {
-    var content = '';
+    console.log(req.url);
+    let content = '';
     req.on('data', (data) => {
         // Append data.
         content += data;
@@ -40,6 +41,7 @@ app.post('/api/form-submit', (req, res, next) => {
     req.on('end', () => {
         // Assuming, we're receiving JSON, parse the string into a JSON object to return.
         var data = JSON.parse(content);
+        console.log(data);
 
         // check('name')
         //     .not()
@@ -53,19 +55,19 @@ app.post('/api/form-submit', (req, res, next) => {
         //         .escape()
         //         .withMessage('You should input a email');
 
-        const errors = validationResult(data);
+        // const errors = validationResult(data);
 
-        const escapedAnswer = {
-            q1: escapeHtml(data.answers.q1)
-        }
+        // const escapedAnswer = {
+        //     q1: escapeHtml(data.answers.q1)
+        // }
 
-        if (!errors.isEmpty()) {
-            return res.status(422).jsonp(errors.array());
-        } else {
-            handleLoginForm(data.username, data.password, escapedAnswer)
-                .then(result => res.send(result))
-                .catch(err => res.send(err));
-        }
+        // if (!errors.isEmpty()) {
+        //     return res.status(422).jsonp(errors.array());
+        // } else {
+        //     handleLoginForm(data.username, data.password, escapedAnswer)
+        //         .then(result => res.send(result))
+        //         .catch(err => res.send(err));
+        // }
     });
 });
 
