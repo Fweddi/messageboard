@@ -16,11 +16,6 @@ form {
     border: solid #fed766 5px;
 }
 
-button {
-    height: 2em;
-    width: 8em;
-}
-
 label {
     margin: 1em 0;
 }
@@ -40,7 +35,9 @@ h2 {
 }
 
 button {
-    margin-top: 2em;
+    height: 2em;
+    width: 8em;
+    margin: 2em 0;
     font-family: 'Nanum Gothic Coding', monospace;
     font-weight: bold;
     background-color: #fed766;
@@ -49,4 +46,10 @@ button {
     color: rgb(0, 0, 30);
     font-size: 1em;
     align-self: center;
+}
+
+p {
+    font-weight: normal;
+    text-align: center;
+    margin: 0.5em 0;
 }
