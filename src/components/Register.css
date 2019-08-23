@@ -36,7 +36,7 @@ h2 {
 
 button {
     height: 2em;
-    width: 8em;
+    width: 16em;
     margin: 2em 0;
     font-family: 'Nanum Gothic Coding', monospace;
     font-weight: bold;
@@ -48,8 +48,27 @@ button {
     align-self: center;
 }
 
+
 p {
     font-weight: normal;
     text-align: center;
     margin: 0.5em 0;
+}
+
+.match {
+    height: 2em;
+    width: 16em;
+    margin: 2em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    background-color: #fed766;
+    border: solid #fed766 5px;
+    border-radius: 3px;
+    color: rgb(0, 0, 30);
+    font-size: 1em;
+    align-self: center;
+    letter-spacing: normal;
 }
