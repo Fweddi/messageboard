@@ -6,6 +6,7 @@ class Register extends React.Component {
     constructor() {
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = { success: 'TBC' };
     }
 
     handleSubmit(event) {
@@ -13,10 +14,10 @@ class Register extends React.Component {
         const data = new FormData(event.target);
         const JSONdata = stringifyFormData(data);
 
-        fetch('/api/login-submit', {
-            method: 'POST',
-            body: JSONdata,
-        }).catch(error => console.error(error));
+        fetch('/api/login-submit', { method: 'POST', body: JSONdata, })
+            .then(res => this.setState({ ['success']: res.status === 302 ? true : false }))
+            .then(() => console.log(this.state.success))
+            .catch(error => console.error(error));
     }
 
     render() {
@@ -30,6 +31,7 @@ class Register extends React.Component {
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="password" pattern='^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$' />
                     <button>Submit</button>
+                    {this.state.success === false ? <p class="error"> Incorrect username or password! Try again. </p> : null}
                 </form >
             </React.Fragment>
         );
