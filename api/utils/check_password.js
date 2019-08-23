@@ -1,11 +1,12 @@
-const validator = require('validator');
+const bcrypt = require('bcrypt');
 
-const checkPassword = (password) => {
-    if (!validator.matches(password, /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$/)) {
-        console.error('Password must contain at least one uppercase letter, one lowercase letter, one number and one special character, and be at least eight characters long');
-        return false;
-    }
-    else return password;
+const checkPassword = (password, hashedPassword) => {
+    return new Promise((resolve, reject) => {
+        bcrypt.compare(password, hashedPassword, (err, res) => {
+            if (err) reject(err);
+            resolve(res);
+        });
+    })
 }
 
 module.exports = checkPassword;

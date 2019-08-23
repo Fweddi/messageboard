@@ -1,6 +1,6 @@
 const validator = require('validator');
 
-const checkUsername = (username) => {
+const sanitiseUsername = (username) => {
     if (!validator.isLength(username, 1, 15)) {
         console.log('Username must be between 1 and 15 characters long');
         return false;
@@ -10,4 +10,4 @@ const checkUsername = (username) => {
     return username;
 }
 
-module.exports = checkUsername;
+module.exports = sanitiseUsername;
