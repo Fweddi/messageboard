@@ -6,8 +6,6 @@ const selectUserByName = (user_name) => {
             if (err) reject(err);
             else resolve(res[0]);
         });
-
-        connection.end();
     })
 }
 

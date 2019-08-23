@@ -6,8 +6,6 @@ const insertUser = (user_name, user_pass, user_date) => {
             if (err) reject(err);
             else resolve(res.affectedRows);
         });
-
-        connection.end();
     })
 }
 
