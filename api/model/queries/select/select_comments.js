@@ -6,8 +6,6 @@ const selectComments = (post_id) => {
             if (err) reject(err);
             else resolve(res[0]);
         });
-
-        connection.end();
     })
 }
 

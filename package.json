@@ -13,7 +13,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "db_build": "NODE_ENV=test node src/model/database/db_build.js",
+    "db_build": "NODE_ENV=test node api/model/database/db_build.js",
     "test": "npm run db_build && react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,5 +34,6 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.1.3"
-  }
+  },
+  "proxy": "http://localhost:9000"
 }
