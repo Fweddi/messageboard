@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Register.css";
-const stringifyFormData = require('../utils/stringify_form_data');
+import { Redirect } from "react-router-dom";
+const stringifyFormData = require('../../utils/stringify_form_data');
 
 class Register extends React.Component {
     constructor() {
@@ -40,6 +41,7 @@ class Register extends React.Component {
     render() {
         return (
             <React.Fragment>
+                {this.state.success === true ? <Redirect to='/board' /> : null}
                 <form onSubmit={this.handleSubmit} className="register__form">
                     <h2>REGISTER</h2>
                     <label htmlFor="username">Username</label>
