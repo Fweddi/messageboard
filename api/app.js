@@ -67,8 +67,9 @@ app.post('/api/login-submit', (req, res) => {
 
 app.get('/api/cookie-check', (req, res) => {
     checkCookie(req.headers.cookie)
-        .then(res => {
-            console.log(res)
+        .then(result => {
+            result ? res.writeHead(200) : res.writeHead(401);
+            res.end();
         })
         .catch(err => console.error(err));
 })
