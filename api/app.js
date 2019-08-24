@@ -76,6 +76,7 @@ const selectPosts = require('./model/queries/select/select_posts');
 app.get('/api/select-messages', (req, res) => {
     selectPosts()
         .then(result => {
+            console.log(result);
             result ? res.json(result) : res.send(null)
             res.end();
         })
