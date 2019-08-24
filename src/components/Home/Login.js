@@ -16,8 +16,7 @@ class Register extends React.Component {
         const JSONdata = stringifyFormData(data);
 
         fetch('/api/login-submit', { method: 'POST', body: JSONdata, })
-            .then(res => this.setState({ ['success']: res.status === 302 ? true : false }))
-            .then(() => console.log(this.state.success))
+            .then(res => this.setState({ ['success']: res.status === 200 ? true : false }))
             .catch(error => console.error(error));
     }
 
