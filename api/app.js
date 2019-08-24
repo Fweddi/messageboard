@@ -62,13 +62,21 @@ app.post('/api/login-submit', (req, res) => {
     });
 });
 
-
-
-
 app.get('/api/cookie-check', (req, res) => {
     checkCookie(req.headers.cookie)
         .then(result => {
             result ? res.writeHead(200) : res.writeHead(401);
+            res.end();
+        })
+        .catch(err => console.error(err));
+})
+
+const selectPosts = require('./model/queries/select/select_posts');
+
+app.get('/api/select-messages', (req, res) => {
+    selectPosts()
+        .then(result => {
+            result ? res.json(result) : res.send(null)
             res.end();
         })
         .catch(err => console.error(err));
