@@ -29,6 +29,11 @@ p {
     height: 100%;
 }
 
+.post__author {
+    border-bottom: solid 2px rgb(205, 70, 70);
+    text-align: center;
+}
+
 .post__header {
     display: flex;
     flex-direction: row;

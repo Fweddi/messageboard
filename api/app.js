@@ -76,7 +76,19 @@ const selectPosts = require('./model/queries/select/select_posts');
 app.get('/api/select-messages', (req, res) => {
     selectPosts()
         .then(result => {
-            console.log(result);
+            if (!Array.isArray(result)) result = [result];
+            result ? res.json(result) : res.send(null)
+            res.end();
+        })
+        .catch(err => console.error(err));
+})
+
+const selectComments = require('./model/queries/select/select_comments');
+
+app.get('/api/select-comments', (req, res) => {
+    selectComments()
+        .then(result => {
+            if (!Array.isArray(result)) result = [result];
             result ? res.json(result) : res.send(null)
             res.end();
         })

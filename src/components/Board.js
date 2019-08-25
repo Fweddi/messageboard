@@ -3,10 +3,12 @@ import '../App.css';
 import './Board.css';
 import { Redirect } from "react-router-dom";
 import Post from "./Post";
+import Comment from "./Comment";
 
 const Home = () => {
     const [valid, setValid] = React.useState('TBC');
     const [posts, setPosts] = React.useState(null);
+    const [comments, setComments] = React.useState(null);
 
     React.useEffect(() => {
         fetch('/api/cookie-check')
@@ -24,11 +26,19 @@ const Home = () => {
             .catch(err => console.error(err));
     }, []);
 
+    React.useEffect(() => {
+        fetch('/api/select-comments')
+            .then(res => res.json())
+            .then(res => setComments(res))
+            .catch(err => console.error(err));
+    }, []);
+
     return (
         <React.Fragment>
             <section className="board">
                 {valid ? null : <Redirect to='/' />}
                 {posts && valid ? posts.map((postData, i) => <Post data={postData} key={i} />) : null}
+                {posts && comments && valid ? comments.map((commentData, i) => <Comment data={commentData} key={i} />) : null}
             </section>
         </React.Fragment>
     );
