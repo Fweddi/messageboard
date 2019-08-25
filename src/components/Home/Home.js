@@ -1,9 +1,9 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 
-import Register from './Home/Register';
-import Login from './Home/Login';
-import Or from './Home/Or';
+import Register from './Register';
+import Login from './Login';
+import Or from './Or';
 
 const Home = () => {
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Post.css";
-const timeAgo = require("../utils/time_ago");
+const timeAgo = require("../../utils/time_ago");
 
 const Post = ({ data }) => {
   return (

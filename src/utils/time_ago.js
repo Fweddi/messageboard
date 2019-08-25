@@ -7,6 +7,8 @@ const timeAgo = (date) => {
     let monthsDiff = Math.floor(daysDiff / 30);
     let yearsDiff = Math.floor(daysDiff / 365);
 
+    console.log(secondsDiff, minutesDiff, hoursDiff, daysDiff, monthsDiff, yearsDiff);
+
     if (secondsDiff <= 60) return secondsDiff > 1 ? [secondsDiff, ' seconds'] : [secondsDiff, ' second'];
     else if (minutesDiff <= 60) return minutesDiff > 1 ? [minutesDiff, ' minutes'] : [minutesDiff, ' minute'];
     else if (hoursDiff <= 60) return hoursDiff > 1 ? [hoursDiff, ' hours'] : [hoursDiff, ' hour'];
