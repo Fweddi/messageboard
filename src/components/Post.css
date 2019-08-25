@@ -1,0 +1,91 @@
+p {
+    text-align: left;
+    margin: 0.5em 1em;
+    padding: 0.5em;
+}
+
+.post__shell {
+    display: flex;
+    flex-direction: row;
+    border: solid #fed766 3px;
+    margin: 1em 0;
+    height: auto;
+    width: 100%;
+}
+
+.user__shell {
+    border-right: solid #fed766 1px;
+    width: 10em;
+}
+
+.data__shell {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.content__shell {
+    height: 100%;
+}
+
+.post__author {
+    border-bottom: solid 2px rgb(205, 70, 70);
+    text-align: center;
+}
+
+.post__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid #fed766 1px;
+    height: 3em;
+}
+
+.post__title {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.post__date {
+    letter-spacing: 1px;
+}
+
+.post__content {
+    letter-spacing: 1px;
+}
+
+.comment__shell {
+    display: flex;
+    flex-direction: row;
+    border: solid #fed766 2px;
+    margin: 1em 0;
+    height: auto;
+    width: 45%;
+}
+
+.comment__user__shell {
+    border-right: solid #fed766 1px;
+    width: 10em;
+}
+
+.comment__author {
+    border-bottom: solid 2px rgb(205, 70, 70);
+    text-align: center;
+}
+
+.comment__title {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.comment__date {
+    letter-spacing: 1px;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.comment__content {
+    letter-spacing: 1px;
+}

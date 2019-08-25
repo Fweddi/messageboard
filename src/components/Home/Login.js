@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Register.css";
-const stringifyFormData = require('../utils/stringify_form_data');
+import { Redirect } from "react-router-dom";
+const stringifyFormData = require('../../utils/stringify_form_data');
 
 class Register extends React.Component {
     constructor() {
@@ -15,14 +16,14 @@ class Register extends React.Component {
         const JSONdata = stringifyFormData(data);
 
         fetch('/api/login-submit', { method: 'POST', body: JSONdata, })
-            .then(res => this.setState({ ['success']: res.status === 302 ? true : false }))
-            .then(() => console.log(this.state.success))
+            .then(res => this.setState({ ['success']: res.status === 200 ? true : false }))
             .catch(error => console.error(error));
     }
 
     render() {
         return (
             <React.Fragment>
+                {this.state.success === true ? <Redirect to='/board' /> : null}
                 <form onSubmit={this.handleSubmit} className="login__form">
                     <h2>LOGIN</h2>
                     <label htmlFor="username">Username</label>
@@ -31,7 +32,7 @@ class Register extends React.Component {
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="password" pattern='^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$' />
                     <button>Submit</button>
-                    {this.state.success === false ? <p class="error"> Incorrect username or password! Try again. </p> : null}
+                    {this.state.success === false ? <p className="error"> Incorrect username or password! Try again. </p> : null}
                 </form >
             </React.Fragment>
         );

@@ -14,7 +14,8 @@ const addNewUser = (username, password, res) => {
         .then(result => sign(`loggedIn=${result.user_id}`, secret))
         .then(cookie => {
             res.writeHead(302, {
-                "Set-Cookie": `loggedIn=${cookie}; HttpOnly; Max-Age=10000`
+                "Set-Cookie": `loggedIn=${cookie}; HttpOnly; Max-Age=10000`,
+                "Location": "/"
             });
             return res.end();
         })

@@ -1,18 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route } from "react-router-dom";
 import './App.css';
 
-import Register from './components/Register';
-import Login from './components/Login';
-import Or from './components/Or';
+import Home from './components/Home';
+import Board from './components/Board';
 
 function App() {
   return (
-    <main>
-      <Register />
-      <Or />
-      <Login />
-    </main>
+    <BrowserRouter>
+      <main>
+        <Route exact path="/" component={Home} />
+        <Route path="/board" component={Board} />
+      </main>
+    </BrowserRouter>
   );
 }
 

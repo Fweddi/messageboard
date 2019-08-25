@@ -11,6 +11,7 @@ const addNewUser = require('./utils/add_new_user');
 const userAlreadyTaken = require('./utils/user_already_taken');
 const login = require('./utils/login');
 const incorrectLogin = require('./utils/incorrect_login');
+const checkCookie = require('./utils/check_cookie');
 
 const app = express();
 
@@ -24,22 +25,7 @@ app.use(middleware);
 
 // app.disable('x-powered -by');
 
-app.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin', ['*']);
-    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.append('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
 
-
-app.get('/express', (req, res) => {
-    res.send({ express: 'Backend is connected' });
-});
-
-// app.get('*', (req, res) => {
-//     console.log('s');
-//     res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
-// });
 
 app.post('/api/register-submit', (req, res) => {
     let content = '';
@@ -76,6 +62,42 @@ app.post('/api/login-submit', (req, res) => {
     });
 });
 
+app.get('/api/cookie-check', (req, res) => {
+    checkCookie(req.headers.cookie)
+        .then(result => {
+            result ? res.writeHead(200) : res.writeHead(401);
+            res.end();
+        })
+        .catch(err => console.error(err));
+})
+
+const selectPosts = require('./model/queries/select/select_posts');
+
+app.get('/api/select-messages', (req, res) => {
+    selectPosts()
+        .then(result => {
+            if (!Array.isArray(result)) result = [result];
+            result ? res.json(result) : res.send(null)
+            res.end();
+        })
+        .catch(err => console.error(err));
+})
+
+const selectComments = require('./model/queries/select/select_comments');
+
+app.get('/api/select-comments', (req, res) => {
+    selectComments()
+        .then(result => {
+            if (!Array.isArray(result)) result = [result];
+            result ? res.json(result) : res.send(null)
+            res.end();
+        })
+        .catch(err => console.error(err));
+})
+
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+// });
 
 app.set('PORT', process.env.PORT || 9000);
 
