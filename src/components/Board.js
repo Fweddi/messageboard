@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import './Board.css';
 import { Redirect } from "react-router-dom";
 import Post from "./Post";
 
@@ -25,10 +26,10 @@ const Home = () => {
 
     return (
         <React.Fragment>
-            {valid ? null : <Redirect to='/' />}
-            <main>
+            <section className="board">
+                {valid ? null : <Redirect to='/' />}
                 {posts && valid ? posts.map((postData, i) => <Post data={postData} key={i} />) : null}
-            </main >
+            </section>
         </React.Fragment>
     );
 }
