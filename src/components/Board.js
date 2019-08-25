@@ -36,6 +36,7 @@ const Home = () => {
     return (
         <React.Fragment>
             <section className="board">
+                <h2 className="board__header">Message Board</h2>
                 {valid ? null : <Redirect to='/' />}
                 {posts && valid ? posts.map((postData, i) => <Post data={postData} key={i} />) : null}
                 {posts && comments && valid ? comments.map((commentData, i) => <Comment data={commentData} key={i} />) : null}

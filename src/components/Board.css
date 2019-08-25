@@ -5,3 +5,9 @@
     justify-content: center;
     align-items: flex-end;
 }
+
+.board__header {
+    align-self: center;
+    margin-bottom: 2em;
+    font-size: 2em;
+}
