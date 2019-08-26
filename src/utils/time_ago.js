@@ -1,13 +1,12 @@
 const timeAgo = (date) => {
     date = parseInt(date, 10);
-    let secondsDiff = Date.now() - date;
+    let millisecondsDiff = Date.now() - date;
+    let secondsDiff = Math.floor(millisecondsDiff / 1000);
     let minutesDiff = Math.floor(secondsDiff / 60);
     let hoursDiff = Math.floor(minutesDiff / 60);
     let daysDiff = Math.floor(hoursDiff / 24);
     let monthsDiff = Math.floor(daysDiff / 30);
     let yearsDiff = Math.floor(daysDiff / 365);
-
-    console.log(secondsDiff, minutesDiff, hoursDiff, daysDiff, monthsDiff, yearsDiff);
 
     if (secondsDiff <= 60) return secondsDiff > 1 ? [secondsDiff, ' seconds'] : [secondsDiff, ' second'];
     else if (minutesDiff <= 60) return minutesDiff > 1 ? [minutesDiff, ' minutes'] : [minutesDiff, ' minute'];

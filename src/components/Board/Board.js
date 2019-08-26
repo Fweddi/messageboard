@@ -4,11 +4,13 @@ import './Board.css';
 import { Redirect } from "react-router-dom";
 import Post from "./Post";
 import Comment from "./Comment";
+import ReplyButton from "./ReplyButton";
 
 const Home = () => {
     const [valid, setValid] = React.useState('TBC');
     const [posts, setPosts] = React.useState(null);
     const [comments, setComments] = React.useState(null);
+    const [click, setClick] = React.useState(false);
 
     React.useEffect(() => {
         fetch('/api/cookie-check')
@@ -41,7 +43,16 @@ const Home = () => {
                             <Post data={postData} key={i} />
                             {comments
                                 .filter(commentData => commentData.post_id === postData.id)
-                                .map((commentData, j) => <Comment data={commentData} key={j} />)}
+                                .map((commentData, j) => {
+                                    return (
+                                        <React.Fragment>
+                                            <Comment data={commentData} key={j} />
+                                        </React.Fragment>
+                                    )
+                                }
+                                )}
+                            <ReplyButton setState={setClick} />
+                            {click ? 'clicked' : null}
                         </React.Fragment>
                     )
                 }) : null}
