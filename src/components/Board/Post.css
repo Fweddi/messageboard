@@ -157,6 +157,6 @@ p {
     align-self: flex-start;
 }
 
-label {
+.title-label {
     margin: 0 1em;
 }

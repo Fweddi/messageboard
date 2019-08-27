@@ -31,7 +31,7 @@ class SubmitPost extends React.Component {
             <React.Fragment>
                 <form onSubmit={this.handleSubmit} className="comment__form">
                     <div className="title">
-                        <label htmlFor="post_title">Title:</label>
+                        <label className="title-label" htmlFor="post_title">Title:</label>
                         <input id="post_title" name="post_title" maxLength="30" />
                     </div>
                     <textarea id="post_content" name="post_content" type="text" className="form__input" required />
