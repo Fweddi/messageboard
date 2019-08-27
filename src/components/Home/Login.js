@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Register.css";
+import "./Form.css";
 import { Redirect } from "react-router-dom";
 const stringifyFormData = require('../../utils/stringify_form_data');
 
@@ -31,7 +31,7 @@ class Register extends React.Component {
 
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="password" pattern='^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$' />
-                    <button>Submit</button>
+                    <button className="button__submit">Submit</button>
                     {this.state.success === false ? <p className="error"> Incorrect username or password! Try again. </p> : null}
                 </form >
             </React.Fragment>

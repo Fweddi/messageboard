@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
 import './App.css';
 
-import Home from './components/Home';
-import Board from './components/Board';
+import Home from './components/Home/Home';
+import Board from './components/Board/Board';
 
 function App() {
   return (

@@ -11,7 +11,7 @@ const addNewUser = (username, password, res) => {
         .then(salt => bcrypt.hash(password, salt))
         .then(hash => insertUser(username, hash, Date.now()))
         .then(() => selectUserByName(username))
-        .then(result => sign(`loggedIn=${result.user_id}`, secret))
+        .then(result => sign(`loggedIn=${result.id}`, secret))
         .then(cookie => {
             res.writeHead(302, {
                 "Set-Cookie": `loggedIn=${cookie}; HttpOnly; Max-Age=10000`,

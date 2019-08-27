@@ -4,7 +4,7 @@ const secret = process.env.SECRET;
 require('dotenv').config();
 
 const login = (data, res) => {
-    let cookie = sign(`loggedIn=${data.user_id}`, secret);
+    let cookie = sign(`loggedIn=${data.id}`, secret);
     res.writeHead(302, {
         "Set-Cookie": `loggedIn=${cookie}; HttpOnly; Max-Age=10000`,
         "Location": "/"

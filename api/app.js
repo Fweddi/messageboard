@@ -23,10 +23,6 @@ const middleware = [
 ];
 app.use(middleware);
 
-// app.disable('x-powered -by');
-
-
-
 app.post('/api/register-submit', (req, res) => {
     let content = '';
     req.on('data', (data) => {
@@ -62,14 +58,72 @@ app.post('/api/login-submit', (req, res) => {
     });
 });
 
+const insertComment = require('./model/queries/insert/insert_comment');
+
+app.post('/api/insert-comment', (req, res) => {
+    let content = '';
+    req.on('data', (data) => {
+        content += data;
+    });
+    req.on('end', () => {
+        let data = JSON.parse(content);
+        let { comment, user_id, post_id } = data;
+        insertComment(comment, user_id, post_id, Date.now())
+            .then(result => {
+                if (result) {
+                    res.writeHead(200);
+                    res.end();
+                } else {
+                    res.writeHead(422);
+                    res.end();
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                res.writeHead(422);
+                res.end();
+            })
+    });
+})
+
+const insertPost = require('./model/queries/insert/insert_post');
+
+app.post('/api/insert-post', (req, res) => {
+    let content = '';
+    req.on('data', (data) => {
+        content += data;
+    });
+    req.on('end', () => {
+        let data = JSON.parse(content);
+        let { post_title, post_content, user_id } = data;
+        insertPost(post_title, post_content, user_id, Date.now())
+            .then(result => {
+                if (result) {
+                    res.writeHead(200);
+                    res.end();
+                } else {
+                    res.writeHead(422);
+                    res.end();
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                res.writeHead(422);
+                res.end();
+            })
+    });
+})
+
 app.get('/api/cookie-check', (req, res) => {
     checkCookie(req.headers.cookie)
         .then(result => {
-            result ? res.writeHead(200) : res.writeHead(401);
+            result ? res.json(result) : res.send(null);
             res.end();
         })
         .catch(err => console.error(err));
 })
+
+
 
 const selectPosts = require('./model/queries/select/select_posts');
 
