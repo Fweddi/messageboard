@@ -2,7 +2,7 @@ import React from 'react';
 
 const CommentButton = (props) => {
     const handleClick = () => {
-        props.setClick(prevState => !prevState)
+        props.setClickComment(prevState => !prevState)
     }
 
     return (

@@ -10,7 +10,7 @@ class SubmitComment extends React.Component {
     }
 
     handleClick() {
-        this.props.setClick(prevState => !prevState);
+        this.props.setClickComment(prevState => !prevState);
     }
 
     handleSubmit(event) {
@@ -21,7 +21,7 @@ class SubmitComment extends React.Component {
         fetch('/api/insert-comments', { method: 'POST', body: JSONdata, })
             .then(res => {
                 this.props.setUpdate(prevState => res.status === 200 ? !prevState : prevState);
-                this.props.setClick(prevState => !prevState);
+                this.props.setClickComment(prevState => !prevState);
             })
             .catch(error => console.error(error));
     }

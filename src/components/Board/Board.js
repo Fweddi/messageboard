@@ -4,6 +4,7 @@ import './Board.css';
 import { Redirect } from "react-router-dom";
 import Post from "./Post";
 import Comment from "./Comment";
+import PostButton from "./PostButton";
 import ReplySection from "./ReplySection";
 
 const Home = () => {
@@ -12,6 +13,11 @@ const Home = () => {
     const [comments, setComments] = React.useState(null);
     const [user_id, setUser_id] = React.useState(null);
     const [update, setUpdate] = React.useState(false);
+    const [clickPost, setClickPost] = React.useState(true);
+
+    const handleClick = () => {
+        setClickPost(prevState => !prevState);
+    }
 
     React.useEffect(() => {
         fetch('/api/cookie-check')
@@ -47,6 +53,8 @@ const Home = () => {
     return (
         <React.Fragment>
             <section className="board">
+                <PostButton setClickPost={setClickPost}></PostButton>
+                {clickPost ? 'yes' : 'no'}
                 <h2 className="board__header">Message Board</h2>
                 {valid ? null : <Redirect to='/' />}
                 {posts && comments && valid ? posts.map((postData, i) => {
