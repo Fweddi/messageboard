@@ -29,7 +29,7 @@ class SubmitComment extends React.Component {
                     <label htmlFor="comment">Comment</label>
                     <input id="comment" name="comment" type="text" required />
                     <input id="post_id" name="post_id" type="hidden" value={this.props.post_id} />
-
+                    <input id="user_id" name="user_id" type="hidden" value={this.props.user_id} />
                     <button>Reply</button>
                 </form >
             </React.Fragment>

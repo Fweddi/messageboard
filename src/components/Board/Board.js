@@ -12,11 +12,23 @@ const Home = () => {
     const [posts, setPosts] = React.useState(null);
     const [comments, setComments] = React.useState(null);
     const [click, setClick] = React.useState(false);
+    const [user_id, setUser_id] = React.useState(null);
 
     React.useEffect(() => {
         fetch('/api/cookie-check')
-            .then(res => res.status === 200 ? setValid(true) : setValid(false))
-            .catch(err => console.error(err));
+            .then(res => res.json())
+            .then(res => {
+                if (res) {
+                    setValid(true);
+                    setUser_id(parseInt(res, 10));
+                } else {
+                    setValid(false);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                setValid(false);
+            });
     }, []);
 
     // .then(res => res.status === 200 ? setValid(true) : setValid(false))
@@ -57,7 +69,7 @@ const Home = () => {
                                 }
                                 )}
                             <ReplyButton setState={setClick} />
-                            {click ? <SubmitComment post_id={postData.id} /> : null}
+                            {click ? <SubmitComment post_id={postData.id} user_id={user_id} /> : null}
                         </React.Fragment>
                     )
                 }) : null}

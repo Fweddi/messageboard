@@ -86,14 +86,13 @@ app.post('/api/insert-comments', (req, res) => {
 app.get('/api/cookie-check', (req, res) => {
     checkCookie(req.headers.cookie)
         .then(result => {
-            console.log('cookie', result);
             result ? res.json(result) : res.send(null);
             res.end();
         })
         .catch(err => console.error(err));
 })
 
-// result ? res.writeHead(200) : res.writeHead(401);
+
 
 const selectPosts = require('./model/queries/select/select_posts');
 
