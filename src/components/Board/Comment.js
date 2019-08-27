@@ -8,7 +8,7 @@ const Post = ({ data }) => {
             <section className="comment__shell">
                 <div className="comment__user__shell">
                     <p className="comment__author">{data.user_name}</p>
-                    <p className="comment__date">Commented {timeAgo(data.comment_date)} ago</p>
+                    <p className="comment__date">{timeAgo(data.comment_date)}</p>
                 </div>
                 <div className="data__shell">
                     <div className="content__shell">
