@@ -11,7 +11,7 @@ const Home = () => {
     const [posts, setPosts] = React.useState(null);
     const [comments, setComments] = React.useState(null);
     const [user_id, setUser_id] = React.useState(null);
-    const [success, setSuccess] = React.useState(false);
+    const [update, setUpdate] = React.useState(false);
 
     React.useEffect(() => {
         fetch('/api/cookie-check')
@@ -42,7 +42,7 @@ const Home = () => {
             .then(res => res.json())
             .then(res => setComments(res))
             .catch(err => console.error(err));
-    }, [success]);
+    }, [update]);
 
     return (
         <React.Fragment>
@@ -58,7 +58,7 @@ const Home = () => {
                                 .map((commentData, j) => {
                                     return <Comment data={commentData} key={j} />
                                 })}
-                            <ReplySection setSuccess={setSuccess} passkey={i} post_id={postData.id} user_id={user_id} />
+                            <ReplySection setUpdate={setUpdate} passkey={i} post_id={postData.id} user_id={user_id} />
                         </React.Fragment>
                     )
                 }) : null}

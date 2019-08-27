@@ -23,10 +23,6 @@ const middleware = [
 ];
 app.use(middleware);
 
-// app.disable('x-powered -by');
-
-
-
 app.post('/api/register-submit', (req, res) => {
     let content = '';
     req.on('data', (data) => {

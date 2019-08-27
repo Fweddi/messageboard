@@ -20,7 +20,8 @@ class SubmitComment extends React.Component {
 
         fetch('/api/insert-comments', { method: 'POST', body: JSONdata, })
             .then(res => {
-                this.props.setSuccess(res.status === 200 ? true : false);
+                this.props.setUpdate(prevState => res.status === 200 ? !prevState : prevState);
+                this.props.setClick(prevState => !prevState);
             })
             .catch(error => console.error(error));
     }
@@ -29,12 +30,13 @@ class SubmitComment extends React.Component {
         return (
             <React.Fragment>
                 <form onSubmit={this.handleSubmit} className="comment__form">
-                    <label htmlFor="comment">Comment</label>
-                    <input id="comment" name="comment" type="text" required />
+                    <textarea id="comment" name="comment" type="text" className="form__comment__input" required />
                     <input id="post_id" name="post_id" type="hidden" value={this.props.post_id} />
                     <input id="user_id" name="user_id" type="hidden" value={this.props.user_id} />
-                    <button>Reply</button>
-                    <button type="reset" onClick={this.handleClick}>Cancel</button>
+                    <div className="form__buttons">
+                        <button className="form__cancel__button" type="reset" onClick={this.handleClick}>Cancel</button>
+                        <button className="form__reply__button">Reply</button>
+                    </div>
                 </form >
             </React.Fragment>
         );

@@ -1,15 +1,15 @@
 import React from 'react';
 
-const ReplyButton = (props) => {
+const CommentButton = (props) => {
     const handleClick = () => {
         props.setClick(prevState => !prevState)
     }
 
     return (
         <React.Fragment>
-            <button className="button__reply" onClick={handleClick}>Reply</button>
+            <button className="button__comment" onClick={handleClick}>Comment</button>
         </React.Fragment>
     )
 }
 
-export default ReplyButton;
+export default CommentButton;
