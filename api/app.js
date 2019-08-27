@@ -71,15 +71,22 @@ app.post('/api/insert-comments', (req, res) => {
     });
     req.on('end', () => {
         let data = JSON.parse(content);
-
-        console.log(data);
-
-        // if ((sanitiseUsername(username) && sanitisePassword(password))) {
-        //     selectUserByName(username)
-        //         .then(result => result ? checkPassword(password, result.user_pass)
-        //             .then(check => check ? login(result, res) : incorrectLogin(res)) : incorrectLogin(res))
-        //         .catch(err => console.error(err))
-        // };
+        let { comment, user_id, post_id } = data;
+        insertComment(comment, user_id, post_id, Date.now())
+            .then(result => {
+                if (result) {
+                    res.writeHead(200);
+                    res.end();
+                } else {
+                    res.writeHead(422);
+                    res.end();
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                res.writeHead(422);
+                res.end();
+            })
     });
 })
 

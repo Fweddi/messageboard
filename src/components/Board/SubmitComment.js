@@ -6,7 +6,6 @@ class SubmitComment extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = { password: null, password__confirm: null, match: true, commentSubmit: 'TBC' };
     }
 
     handleSubmit(event) {
@@ -18,7 +17,10 @@ class SubmitComment extends React.Component {
 
 
         fetch('/api/insert-comments', { method: 'POST', body: JSONdata, })
-            .then(res => this.setState({ ['success']: res.status === 200 ? true : false }))
+            .then(res => {
+                console.log(res);
+                this.props.setSuccess(res.status === 200 ? true : false);
+            })
             .catch(error => console.error(error));
     }
 
