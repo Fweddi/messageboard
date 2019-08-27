@@ -60,7 +60,7 @@ app.post('/api/login-submit', (req, res) => {
 
 const insertComment = require('./model/queries/insert/insert_comment');
 
-app.post('/api/insert-comments', (req, res) => {
+app.post('/api/insert-comment', (req, res) => {
     let content = '';
     req.on('data', (data) => {
         content += data;

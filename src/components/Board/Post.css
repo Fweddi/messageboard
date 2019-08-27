@@ -8,7 +8,7 @@ p {
     display: flex;
     flex-direction: row;
     border: solid #fed766 3px;
-    margin: 4em 0 1em 0;
+    margin: 2em 0 1em 0;
     height: auto;
     width: 100%;
 }
@@ -129,8 +129,14 @@ p {
     align-self: flex-end;
 }
 
-.reply__section {
+.comment__section {
     width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.add__post__section {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

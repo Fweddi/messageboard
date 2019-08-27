@@ -4,16 +4,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+    margin: 2em 0em;
 }
 
 .board__header {
     align-self: center;
-    margin-top: 1em;
+    margin: 1em;
     font-size: 2em;
 }
 
 .button__comment {
-    width: auto;
+    width: 10em;
     align-self: flex-end;
     margin: 0;
     font-family: 'Nanum Gothic Coding', monospace;
@@ -23,12 +24,12 @@
     font-size: 1em;
     border: none;
     padding: 0.2em;
-    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-around;
 }
 
 .button__post {
     width: 10em;
-    align-self: flex-end;
     justify-content: space-around;
     margin: 0;
     font-family: 'Nanum Gothic Coding', monospace;
@@ -40,12 +41,11 @@
     padding: 0.2em;
     display: flex;
     align-items: center;
-    /* border-bottom: 1px solid white; */
+    align-self: center;
 }
 
-.plus {
+.post__plus {
     border: 1px solid white;
-    width: 2ch;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,4 +53,15 @@
     height: 2ch;
     font-weight: bold;
     font-size: 2em;
+}
+
+.comment__plus {
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2ch;
+    height: 2ch;
+    font-weight: bold;
+    font-size: 1em;
 }

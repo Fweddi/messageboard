@@ -5,7 +5,8 @@ import { Redirect } from "react-router-dom";
 import Post from "./Post";
 import Comment from "./Comment";
 import PostButton from "./PostButton";
-import ReplySection from "./ReplySection";
+import CommentSection from "./CommentSection";
+import SubmitPost from './SubmitPost';
 
 const Home = () => {
     const [valid, setValid] = React.useState(true);
@@ -13,11 +14,7 @@ const Home = () => {
     const [comments, setComments] = React.useState(null);
     const [user_id, setUser_id] = React.useState(null);
     const [update, setUpdate] = React.useState(false);
-    const [clickPost, setClickPost] = React.useState(true);
-
-    const handleClick = () => {
-        setClickPost(prevState => !prevState);
-    }
+    const [clickPost, setClickPost] = React.useState(false);
 
     React.useEffect(() => {
         fetch('/api/cookie-check')
@@ -53,9 +50,11 @@ const Home = () => {
     return (
         <React.Fragment>
             <section className="board">
-                <PostButton setClickPost={setClickPost}></PostButton>
-                {clickPost ? 'yes' : 'no'}
                 <h2 className="board__header">Message Board</h2>
+                <section className="add__post__section">
+                    <PostButton setClickPost={setClickPost} />
+                    {clickPost ? <SubmitPost setClickPost={setClickPost} setUpdate={setUpdate} user_id={user_id} /> : null}
+                </section>
                 {valid ? null : <Redirect to='/' />}
                 {posts && comments && valid ? posts.map((postData, i) => {
                     return (
@@ -66,7 +65,7 @@ const Home = () => {
                                 .map((commentData, j) => {
                                     return <Comment data={commentData} key={j} />
                                 })}
-                            <ReplySection setUpdate={setUpdate} passkey={i} post_id={postData.id} user_id={user_id} />
+                            <CommentSection setUpdate={setUpdate} passkey={i} post_id={postData.id} user_id={user_id} />
                         </React.Fragment>
                     )
                 }) : null}

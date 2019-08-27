@@ -7,7 +7,7 @@ const CommentButton = (props) => {
 
     return (
         <React.Fragment>
-            <button className="button__comment" onClick={handleClick}>Comment</button>
+            <button className="button__comment" onClick={handleClick}><div className="comment__plus">+</div>Add new comment</button>
         </React.Fragment>
     )
 }

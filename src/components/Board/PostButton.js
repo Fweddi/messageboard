@@ -7,8 +7,7 @@ const PostButton = (props) => {
 
     return (
         <React.Fragment>
-
-            <button className="button__post" onClick={handleClick}><div className="plus">+</div> Add new post</button>
+            <button className="button__post" onClick={handleClick}><div className="post__plus">+</div> Add new post</button>
         </React.Fragment>
     )
 }
