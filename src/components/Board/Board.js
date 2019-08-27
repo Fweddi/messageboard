@@ -4,14 +4,12 @@ import './Board.css';
 import { Redirect } from "react-router-dom";
 import Post from "./Post";
 import Comment from "./Comment";
-import ReplyButton from "./ReplyButton";
-import SubmitComment from "./SubmitComment";
+import ReplySection from "./ReplySection";
 
 const Home = () => {
     const [valid, setValid] = React.useState(true);
     const [posts, setPosts] = React.useState(null);
     const [comments, setComments] = React.useState(null);
-    const [click, setClick] = React.useState(false);
     const [user_id, setUser_id] = React.useState(null);
 
     React.useEffect(() => {
@@ -30,10 +28,6 @@ const Home = () => {
                 setValid(false);
             });
     }, []);
-
-    // .then(res => res.status === 200 ? setValid(true) : setValid(false))
-
-
 
     React.useEffect(() => {
         fetch('/api/select-messages')
@@ -68,8 +62,7 @@ const Home = () => {
                                     )
                                 }
                                 )}
-                            <ReplyButton setState={setClick} />
-                            {click ? <SubmitComment post_id={postData.id} user_id={user_id} /> : null}
+                            <ReplySection key={i} post_id={postData.id} user_id={user_id} />
                         </React.Fragment>
                     )
                 }) : null}
