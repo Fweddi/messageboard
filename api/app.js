@@ -86,6 +86,32 @@ app.post('/api/insert-comment', (req, res) => {
     });
 })
 
+app.post('/api/insert-post', (req, res) => {
+    let content = '';
+    req.on('data', (data) => {
+        content += data;
+    });
+    req.on('end', () => {
+        let data = JSON.parse(content);
+        let { post_title, post_content, user_id } = data;
+        insertComment(post_title, post_content, user_id, Date.now())
+            .then(result => {
+                if (result) {
+                    res.writeHead(200);
+                    res.end();
+                } else {
+                    res.writeHead(422);
+                    res.end();
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                res.writeHead(422);
+                res.end();
+            })
+    });
+})
+
 app.get('/api/cookie-check', (req, res) => {
     checkCookie(req.headers.cookie)
         .then(result => {

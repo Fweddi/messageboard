@@ -30,7 +30,7 @@ class SubmitComment extends React.Component {
         return (
             <React.Fragment>
                 <form onSubmit={this.handleSubmit} className="comment__form">
-                    <textarea id="comment" name="comment" type="text" className="form__comment__input" required />
+                    <textarea id="comment" name="comment" type="text" className="form__input" required />
                     <input id="post_id" name="post_id" type="hidden" value={this.props.post_id} />
                     <input id="user_id" name="user_id" type="hidden" value={this.props.user_id} />
                     <div className="form__buttons">

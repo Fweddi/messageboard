@@ -141,11 +141,22 @@ p {
     flex-direction: column;
 }
 
-.form__comment__input {
+.form__input {
     height: 6em;
     width: 100%;
     max-width: 100%;
     padding: 0.4em;
     font-size: 1em;
     font-family: 'Nanum Gothic Coding', monospace;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    align-self: flex-start;
+}
+
+label {
+    margin: 0 1em;
 }
