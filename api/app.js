@@ -86,6 +86,8 @@ app.post('/api/insert-comment', (req, res) => {
     });
 })
 
+const insertPost = require('./model/queries/insert/insert_post');
+
 app.post('/api/insert-post', (req, res) => {
     let content = '';
     req.on('data', (data) => {
@@ -94,7 +96,7 @@ app.post('/api/insert-post', (req, res) => {
     req.on('end', () => {
         let data = JSON.parse(content);
         let { post_title, post_content, user_id } = data;
-        insertComment(post_title, post_content, user_id, Date.now())
+        insertPost(post_title, post_content, user_id, Date.now())
             .then(result => {
                 if (result) {
                     res.writeHead(200);

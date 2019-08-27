@@ -38,7 +38,7 @@ const Home = () => {
             .then(res => res.json())
             .then(res => setPosts(res))
             .catch(err => console.error(err));
-    }, []);
+    }, [update]);
 
     React.useEffect(() => {
         fetch('/api/select-comments')

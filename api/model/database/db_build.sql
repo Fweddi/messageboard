@@ -15,7 +15,7 @@ VALUES ('Donna', '$2b$10$hdVr/jqiPcryNOWJc/meP.ioJ437Q.mMjaTbrW/e2qg4zyHnpzA.i',
 
 CREATE TABLE post (
     id INT PRIMARY KEY AUTO_INCREMENT, 
-    post_title VARCHAR(100) NOT NULL, 
+    post_title VARCHAR(30) NOT NULL, 
     post_content TEXT NOT NULL, 
     user_id INT NOT NULL, 
     CONSTRAINT post_author FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE, 
