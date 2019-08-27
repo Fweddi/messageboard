@@ -62,6 +62,27 @@ app.post('/api/login-submit', (req, res) => {
     });
 });
 
+const insertComment = require('./model/queries/insert/insert_comment');
+
+app.post('/api/insert-comments', (req, res) => {
+    let content = '';
+    req.on('data', (data) => {
+        content += data;
+    });
+    req.on('end', () => {
+        let data = JSON.parse(content);
+
+        console.log(data);
+
+        // if ((sanitiseUsername(username) && sanitisePassword(password))) {
+        //     selectUserByName(username)
+        //         .then(result => result ? checkPassword(password, result.user_pass)
+        //             .then(check => check ? login(result, res) : incorrectLogin(res)) : incorrectLogin(res))
+        //         .catch(err => console.error(err))
+        // };
+    });
+})
+
 app.get('/api/cookie-check', (req, res) => {
     checkCookie(req.headers.cookie)
         .then(result => {

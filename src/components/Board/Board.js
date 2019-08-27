@@ -5,9 +5,10 @@ import { Redirect } from "react-router-dom";
 import Post from "./Post";
 import Comment from "./Comment";
 import ReplyButton from "./ReplyButton";
+import SubmitComment from "./SubmitComment";
 
 const Home = () => {
-    const [valid, setValid] = React.useState('TBC');
+    const [valid, setValid] = React.useState(true);
     const [posts, setPosts] = React.useState(null);
     const [comments, setComments] = React.useState(null);
     const [click, setClick] = React.useState(false);
@@ -17,6 +18,8 @@ const Home = () => {
             .then(res => res.status === 200 ? setValid(true) : setValid(false))
             .catch(err => console.error(err));
     }, []);
+
+
 
     React.useEffect(() => {
         fetch('/api/select-messages')
@@ -52,7 +55,7 @@ const Home = () => {
                                 }
                                 )}
                             <ReplyButton setState={setClick} />
-                            {click ? 'clicked' : null}
+                            {click ? <SubmitComment post_id={postData.id} /> : null}
                         </React.Fragment>
                     )
                 }) : null}
