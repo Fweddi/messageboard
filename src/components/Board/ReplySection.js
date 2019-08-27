@@ -8,8 +8,8 @@ const ReplySection = ({ passkey, post_id, user_id, setSuccess }) => {
 
     return (
         <React.Fragment>
-            <ReplyButton key={passkey} setState={setClick} />
-            {click ? <SubmitComment setSuccess={setSuccess} post_id={post_id} user_id={user_id} /> : null}
+            <ReplyButton key={passkey} setClick={setClick} />
+            {click ? <SubmitComment setClick={setClick} setSuccess={setSuccess} post_id={post_id} user_id={user_id} /> : null}
         </React.Fragment>
     )
 }

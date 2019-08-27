@@ -6,6 +6,11 @@ class SubmitComment extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.props.setClick(prevState => !prevState);
     }
 
     handleSubmit(event) {
@@ -13,12 +18,8 @@ class SubmitComment extends React.Component {
         const data = new FormData(event.target);
         const JSONdata = stringifyFormData(data);
 
-        console.log(JSONdata);
-
-
         fetch('/api/insert-comments', { method: 'POST', body: JSONdata, })
             .then(res => {
-                console.log(res);
                 this.props.setSuccess(res.status === 200 ? true : false);
             })
             .catch(error => console.error(error));
@@ -33,6 +34,7 @@ class SubmitComment extends React.Component {
                     <input id="post_id" name="post_id" type="hidden" value={this.props.post_id} />
                     <input id="user_id" name="user_id" type="hidden" value={this.props.user_id} />
                     <button>Reply</button>
+                    <button type="reset" onClick={this.handleClick}>Cancel</button>
                 </form >
             </React.Fragment>
         );
