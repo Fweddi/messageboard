@@ -19,6 +19,8 @@ const Home = () => {
             .catch(err => console.error(err));
     }, []);
 
+    // .then(res => res.status === 200 ? setValid(true) : setValid(false))
+
 
 
     React.useEffect(() => {
