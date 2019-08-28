@@ -149,9 +149,9 @@ app.get('/api/select-comments', (req, res) => {
         .catch(err => console.error(err));
 })
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+});
 
 app.set('PORT', process.env.PORT || 9000);
 
