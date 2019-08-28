@@ -30,6 +30,7 @@ class SubmitComment extends React.Component {
         return (
             <React.Fragment>
                 <form onSubmit={this.handleSubmit} className="comment__form">
+                    <label className="hidden-label" htmlFor="comment">Add comment content here:</label>
                     <textarea id="comment" name="comment" type="text" className="form__input" required />
                     <input id="post_id" name="post_id" type="hidden" value={this.props.post_id} />
                     <input id="user_id" name="user_id" type="hidden" value={this.props.user_id} />
