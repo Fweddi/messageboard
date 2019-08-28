@@ -22,7 +22,7 @@ CREATE TABLE post (
     post_date VARCHAR(20) NOT NULL
     );
 INSERT INTO post (post_title, post_content, user_id, post_date) 
-VALUES ('We are all cyborgs', 'Technology is not neutral. We"re inside of what we make, and it"s inside of us. We"re living in a world of connections — and it matters which ones get made and unmade.', (SELECT id FROM user WHERE user_name LIKE 'Donna'), '1566500398656'), ('We are all witty', 'Such is the nature of men, that howsoever they may acknowledge many others to be more witty, or more eloquent, or more learned - yet they will hardly believe there be many so wise as themselves.', (SELECT id FROM user WHERE user_name LIKE 'Thomas'), '1566500398659');
+VALUES ('We are all cyborgs', 'Technology is not neutral. We%27re inside of what we make, and it%27s inside of us. We%27re living in a world of connections — and it matters which ones get made and unmade.', (SELECT id FROM user WHERE user_name LIKE 'Donna'), '1566500398656'), ('We are all witty', 'Such is the nature of men, that howsoever they may acknowledge many others to be more witty, or more eloquent, or more learned - yet they will hardly believe there be many so wise as themselves.', (SELECT id FROM user WHERE user_name LIKE 'Thomas'), '1566500398659');
 CREATE TABLE comment (
     id INT PRIMARY KEY AUTO_INCREMENT, 
     comment_content TEXT NOT NULL,
