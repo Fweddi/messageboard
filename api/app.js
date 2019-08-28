@@ -68,6 +68,8 @@ app.post('/api/insert-comment', (req, res) => {
     req.on('end', () => {
         let data = JSON.parse(content);
         let { comment, user_id, post_id } = data;
+        comment = comment.replace(/'/, '%27');
+
         insertComment(comment, user_id, post_id, Date.now())
             .then(result => {
                 if (result) {
@@ -96,6 +98,8 @@ app.post('/api/insert-post', (req, res) => {
     req.on('end', () => {
         let data = JSON.parse(content);
         let { post_title, post_content, user_id } = data;
+        post_content = post_content.replace(/'/, '%27');
+
         insertPost(post_title, post_content, user_id, Date.now())
             .then(result => {
                 if (result) {
@@ -131,6 +135,7 @@ app.get('/api/select-messages', (req, res) => {
     selectPosts()
         .then(result => {
             if (!Array.isArray(result)) result = [result];
+            result.forEach(post => post.post_content = post.post_content.replace('%27', '\''));
             result ? res.json(result) : res.send(null)
             res.end();
         })
@@ -143,6 +148,7 @@ app.get('/api/select-comments', (req, res) => {
     selectComments()
         .then(result => {
             if (!Array.isArray(result)) result = [result];
+            result.forEach(comment => comment.comment_content = comment.comment_content.replace('%27', '\''));
             result ? res.json(result) : res.send(null)
             res.end();
         })
