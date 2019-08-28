@@ -6,7 +6,7 @@
   "scripts": {
     "db_build": "NODE_ENV=test node model/database/db_build.js",
     "test": "npm run db_build && jest test",
-    "start": "node ./index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
