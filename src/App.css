@@ -6,3 +6,7 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+.hidden-label {
+  display: none;
+}

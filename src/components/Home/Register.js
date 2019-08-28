@@ -49,7 +49,7 @@ class Register extends React.Component {
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="password" pattern='^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$' value={this.state.value} onChange={this.handleChange} required />
 
-                    <label htmlFor="password">Confirm Password</label>
+                    <label htmlFor="password__confirm">Confirm Password</label>
                     <input id="password__confirm" name="password__confirm" type="password" pattern='^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{8,}$' value={this.state.value} onChange={this.handleChange} onBlur={this.handleBlur} required />
                     {!this.state.match ? <div className="match"> Passwords must match! </div> : <button className="button__submit">Submit</button>}
                     {this.state.success === false ? <p className="error"> User already taken! Try another username. </p> : null}

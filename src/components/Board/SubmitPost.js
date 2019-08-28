@@ -34,6 +34,7 @@ class SubmitPost extends React.Component {
                         <label className="title-label" htmlFor="post_title">Title:</label>
                         <input id="post_title" name="post_title" maxLength="30" />
                     </div>
+                    <label className="hidden-label" htmlFor="post_content">Add post content here:</label>
                     <textarea id="post_content" name="post_content" type="text" className="form__input" required />
                     <input id="user_id" name="user_id" type="hidden" value={this.props.user_id} />
                     <div className="form__buttons">
