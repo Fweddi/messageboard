@@ -11,12 +11,12 @@
     "react-scripts": "3.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cd api && npm install && npm install --only=dev --no-shrinkwrap && npm start",
     "build": "react-scripts build",
     "db_build": "NODE_ENV=test node api/model/database/db_build.js",
     "test": "npm run db_build && react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "react-scripts build && cd api && npm install && npm install --only=dev --no-shrinkwrap && npm start"
+    "heroku-postbuild": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"
