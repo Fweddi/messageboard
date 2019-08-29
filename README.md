@@ -2,6 +2,10 @@
 
 This project is a messageboard designed using Node.js, React and MySQL technologies. It is hosted on Heroku and is using Travis for CI.
 
+Go ahead and check it out: https://messageboard-freddie.herokuapp.com/
+
+____
+
 To start locally:
 1. in your CLI, run `git clone https://github.com/Fweddi/messageboard.git` to clone the repository
 2. `cd messageboard` to change into the root directory
