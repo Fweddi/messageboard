@@ -3,7 +3,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const selectUserByName = require('./model/queries/select/select_user_by_name');
-
 const sanitiseUsername = require('./utils/sanitise_username');
 const sanitisePassword = require('./utils/sanitise_password');
 const checkPassword = require('./utils/check_password');
@@ -12,7 +11,10 @@ const userAlreadyTaken = require('./utils/user_already_taken');
 const login = require('./utils/login');
 const incorrectLogin = require('./utils/incorrect_login');
 const checkCookie = require('./utils/check_cookie');
-
+const insertComment = require('./model/queries/insert/insert_comment');
+const insertPost = require('./model/queries/insert/insert_post');
+const selectPosts = require('./model/queries/select/select_posts');
+const selectComments = require('./model/queries/select/select_comments');
 const app = express();
 
 const middleware = [
@@ -21,6 +23,7 @@ const middleware = [
     bodyParser.json(),
     express.static(path.join(__dirname, '..', 'build'))
 ];
+
 app.use(middleware);
 
 app.post('/api/register-submit', (req, res) => {
@@ -58,8 +61,6 @@ app.post('/api/login-submit', (req, res) => {
     });
 });
 
-const insertComment = require('./model/queries/insert/insert_comment');
-
 app.post('/api/insert-comment', (req, res) => {
     let content = '';
     req.on('data', (data) => {
@@ -87,8 +88,6 @@ app.post('/api/insert-comment', (req, res) => {
             })
     });
 })
-
-const insertPost = require('./model/queries/insert/insert_post');
 
 app.post('/api/insert-post', (req, res) => {
     let content = '';
@@ -127,10 +126,6 @@ app.get('/api/cookie-check', (req, res) => {
         .catch(err => console.error(err));
 })
 
-
-
-const selectPosts = require('./model/queries/select/select_posts');
-
 app.get('/api/select-messages', (req, res) => {
     selectPosts()
         .then(result => {
@@ -141,8 +136,6 @@ app.get('/api/select-messages', (req, res) => {
         })
         .catch(err => console.error(err));
 })
-
-const selectComments = require('./model/queries/select/select_comments');
 
 app.get('/api/select-comments', (req, res) => {
     selectComments()
