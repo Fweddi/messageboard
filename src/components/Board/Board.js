@@ -2,11 +2,11 @@ import React from 'react';
 import '../../App.css';
 import './Board.css';
 import { Redirect } from "react-router-dom";
-import Post from "./Post";
-import Comment from "./Comment";
-import PostButton from "./PostButton";
-import CommentSection from "./CommentSection";
-import SubmitPost from './SubmitPost';
+import Post from "./Post/Post";
+import PostButton from "./Post/PostButton";
+import SubmitPost from './Post/SubmitPost';
+import Comment from "./Comment/Comment";
+import CommentSection from "./Comment/CommentSection";
 
 const Home = () => {
     const [valid, setValid] = React.useState(true);
