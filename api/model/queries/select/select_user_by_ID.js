@@ -1,4 +1,4 @@
-const connection = require('../../database/db_connect');
+const { connection } = require('../../database/db_connect');
 
 const selectUserByID = (user_id) => {
     return new Promise((resolve, reject) => {
