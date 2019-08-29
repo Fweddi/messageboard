@@ -1,4 +1,4 @@
-const connection = require('../../database/db_connect');
+const { connection } = require('../../database/db_connect');
 
 const insertUser = (user_name, user_pass, user_date) => {
     return new Promise((resolve, reject) => {

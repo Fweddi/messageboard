@@ -1,4 +1,4 @@
-const connection = require('../../database/db_connect');
+const { connection } = require('../../database/db_connect');
 
 const insertComment = (comment_content, user_id, post_id, comment_date) => {
     return new Promise((resolve, reject) => {

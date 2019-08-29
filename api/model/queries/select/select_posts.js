@@ -1,4 +1,4 @@
-const connection = require('../../database/db_connect');
+const { connection } = require('../../database/db_connect');
 
 const selectPosts = () => {
     return new Promise((resolve, reject) => {

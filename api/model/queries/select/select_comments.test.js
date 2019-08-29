@@ -1,7 +1,7 @@
 const selectComments = require('./select_comments');
 
 test('selects comments from the database', () => {
-    selectComments(1)
-        .then(res => expect(res['comment_id']).toBe(1))
+    selectComments()
+        .then(res => Array.isArray(res) ? expect(res[0]['comment.id']).toBe(1) : expect(res['comment.id']).toBe(1))
         .catch(err => console.error(err));
 });
